@@ -141,14 +141,20 @@
   <ItemGroup>
     <ClCompile Include="laba_05_02_03.cpp" />
     <ClCompile Include="Student.cpp" />
+    <ClCompile Include="University.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Double_List.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="stringStream.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="University.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Double_List.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
