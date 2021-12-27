@@ -14,8 +14,8 @@ void menu();
 
 int main()
 {
-	try { 
-		menu(); 
+	try {
+		menu();
 	}
 	catch (Exception& exception) {
 		cout << "Exception occurred : " << exception.what() << endl;

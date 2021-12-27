@@ -179,9 +179,27 @@ void University::delSubject()
 
 void University::print()
 {
+	int v;
 	cout << endl;
+	cout << "\tPrint:" << endl;
+	cout << "    1. All data" << endl;
+	cout << "    2. Students with bad mark" << endl;
+	cout << "    0. Back" << endl;
+	cin >> v;
+	switch (v) {
+	case 1: {
 	for (size_t i = 0; i < students.size(); i++)
 		students[i].print();
+		break; }
+	case 2: {
+	for (size_t i = 0; i < students.size(); i++)
+		if(students[i].hasLameMark()) students[i].print();
+		break; }
+	default: {
+		cout << "Incorrected number" << endl;
+		break; }
+	}
+	
 }
 
 void University::sort()

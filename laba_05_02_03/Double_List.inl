@@ -14,7 +14,7 @@ inline List<T>::List(const T* arr, const size_t amount)
 template<class T>
 inline List<T>::List(const std::initializer_list<T>& arr)
 {
-	for(auto n : arr)
+	for (auto n : arr)
 		this->push_back(n);
 }
 

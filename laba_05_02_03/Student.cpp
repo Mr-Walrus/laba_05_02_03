@@ -116,6 +116,13 @@ void Student::addSubject(string subject, int8_t mark)
 	countAverageMark();
 }
 
+bool Student::hasLameMark()
+{
+	for (size_t i = 0; i < subjects.size(); i++)
+		if (subjects[i].mark == 2) return true;
+	return false;
+}
+
 void Student::setSortType(sortType sortType)
 {
 	_sortType = sortType;

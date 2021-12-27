@@ -85,6 +85,8 @@ public:
 	void delSubject(string);
 	void addSubject(string, int8_t);
 
+	bool hasLameMark();
+
 	static void setSortType(sortType sortType);
 
 	void print();
