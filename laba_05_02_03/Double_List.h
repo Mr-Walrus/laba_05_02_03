@@ -26,16 +26,17 @@ private:
 		Node* temp = index < _size / 2 ? first : last; // если индекс ближе к первому элементу, то перебор начинаем с него, иначе с последнего
 		if (index < _size / 2) // если индекс ближе к первому
 			for (size_t _i = 0; _i < index; ++_i) // перебор с первого до iтого
-				temp = temp->next; // переход к следующему
+				temp = temp->next_ptr; // переход к следующему
 		else // если индекс ближе к последнему
 			for (size_t _i = _size - 1; _i > index; --_i) // перебор с последнего до iтого
-				temp = temp->prev; // переход к предыдущему
+				temp = temp->prev_ptr; // переход к предыдущему
 		return temp;
 	}
 
 public:
 	List();
-	List(T* arr, size_t amount);
+	List(const T* arr, const size_t amount);
+	List(const std::initializer_list<T>& arr);
 	List(const List<T>& other);		// конструктор копирования
 	~List();						// деструктор
 	bool empty() const;
@@ -49,6 +50,9 @@ public:
 
 	void push(size_t, T new_data);	// вставляет n-ый элемент
 	T pop(size_t);		// возвращает n-ый элемент после удаления
+
+	void sort();
+	List<int> search(T key);
 
 	List<T>& operator= (const List<T>& other); // оператор присваивания
 

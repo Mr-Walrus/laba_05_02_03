@@ -5,10 +5,17 @@ template<class T>
 inline List<T>::List() {}
 
 template<class T>
-inline List<T>::List(T* arr, size_t amount)
+inline List<T>::List(const T* arr, const size_t amount)
 {
 	for (size_t i = 0; i < amount; i++)
 		this->push_back(arr[i]);
+}
+
+template<class T>
+inline List<T>::List(const std::initializer_list<T>& arr)
+{
+	for(auto n : arr)
+		this->push_back(n);
 }
 
 template<class T>
@@ -197,13 +204,45 @@ inline T List<T>::pop(size_t index)
 }
 
 template<class T>
+inline void List<T>::sort()
+{
+	T tmp;
+	bool F = true;
+	for (int i = 0; (i < _size - 1) && F; i++)
+	{
+		F = false;
+		for (int j = _size - 1; j >= i + 1; j--)
+		{
+			if ((*this)[j] < (*this)[j - 1])
+			{
+				swap((*this)[j], (*this)[j - 1]);
+				F = true;
+			}
+		}
+	}
+}
+
+template<class T>
+inline List<int> List<T>::search(T key)
+{
+	List<int> indexes;
+	Node* temp = first;
+	for (size_t i = 0; i < _size; ++i) // перебор с первого до iтого
+	{
+		if (temp->data == key) indexes.push_back(i);
+		temp = temp->next_ptr; // переход к следующему
+	}
+	return indexes;
+}
+
+template<class T>
 inline List<T>& List<T>::operator=(const List<T>& other)
 {
 	while (!(this->empty())) // удаляем все элементы
 		this->pop_front();
-	this->_size = other._size; // копируем размер
+	this->_size = 0; // копируем размер
 	List::Node* temp = other.first;	// начиная с первого
-	for (size_t i = 0; i < this->_size; i++)	// в цикле для каждого элемента
+	for (size_t i = 0; i < other._size; i++)	// в цикле для каждого элемента
 	{
 		this->push_back(temp->data);		// добавляем в конец текущий элемент
 		temp = temp->next_ptr;				// переходим к следующему элементу
